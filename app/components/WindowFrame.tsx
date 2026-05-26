@@ -167,13 +167,22 @@ export default function WindowFrame({
                 {text}
               </p>
 
-              <div className="mt-5">
+              <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
                 <Link
                   href={href}
                   className="inline-flex rounded-full border border-[#d0a11a]/34 bg-[#d0a11a] px-4.5 py-2 text-[13px] font-semibold text-black shadow-[0_8px_18px_rgba(208,161,26,0.16)] transition hover:opacity-90"
                 >
                   {cta}
                 </Link>
+
+                {secondaryCta && secondaryHref ? (
+                  <Link
+                    href={secondaryHref}
+                    className="inline-flex rounded-full border border-white/14 bg-white/5 px-4.5 py-2 text-[13px] font-semibold text-white/90 backdrop-blur-sm transition hover:bg-white/8"
+                  >
+                    {secondaryCta}
+                  </Link>
+                ) : null}
               </div>
             </div>
           </div>
