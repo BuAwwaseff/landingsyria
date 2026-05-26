@@ -1,87 +1,48 @@
-import type {
-  ReactNode
+import type { ReactNode } from "react";
 
-} from "react";
-export type HeroCardContent = {
+export type AboutIntroSectionProps = {
+  section: {
+    tag: string;
+    title: string;
+    text: string;
+  };
+};
+
+
+export type FeatureCardProps = {
+  eyebrow: string;
+  title: string;
+  text: string;
+};
+
+export type SectionHeadingProps = {
+  eyebrow: string;
+  title: ReactNode;
+  text: ReactNode;
+};
+
+export type PathPointProps = {
+  title: string;
+  text: string;
+};
+
+export type PathCardProps = {
   side: string;
   title: string;
   text: string;
+  image: string;
   cta: string;
-  href: string;
-  benefitA: {
-    title: string;
-    text: string;
-  };
-  benefitB: {
-    title: string;
-    text: string;
-  };
+  ctaHref: string;
+  secondaryCta: string;
+  secondaryHref: string;
+  pointA: PathPointProps;
+  pointB: PathPointProps;
 };
 
-export type HeroGatewaySectionProps = {
-  hero: {
-    agent: HeroCardContent;
-    partner: HeroCardContent;
-  };
-};
-
-export type FramedSectionProps = {
-  tag: string;
-  title: string;
-  text: string;
-  children: ReactNode;
-  glowId: string;
-  viewBox: string;
-  outerPath: string;
-  innerPath: string;
-  line: {
-    x1: string;
-    y1: string;
-    x2: string;
-    y2: string;
-  };
-};
-
-export type CommonPointCardProps = {
-  title: string;
-  text: string;
-};
-
-export type DifferencePoint = {
-  title: string;
-  text: string;
-};
-
-export type DifferenceColumnProps = {
-  side: string;
-  intro: string;
-  points: DifferencePoint[];
-};
-
-
-export type SharedFoundationSectionProps = {
-  section: {
-    tag: string;
-    title: string;
-    text: string;
-    points: {
-      title: string;
-      text: string;
-    }[];
-  };
-};
-export type DifferencesSectionProps = {
-  section: {
-    tag: string;
-    title: string;
-    text: string;
-    columns: {
-      side: string;
-      intro: string;
-      points: {
-        title: string;
-        text: string;
-      }[];
-    }[];
-  };
+export type StepCardProps = {
+  number: string;
+  title: ReactNode;
+  text: ReactNode;
+  image: string;
+  imageAlt: string;
 };
