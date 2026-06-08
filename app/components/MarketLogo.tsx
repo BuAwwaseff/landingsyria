@@ -13,17 +13,18 @@ export function MarketLogo({
 }) {
   const dimensions =
     preset === "header"
-      ? { width: 144, height: 32 }
-      : { width: 172, height: 38 };
+      ? { width: 128, height: 23 }
+      : { width: 192, height: 34 };
 
   return (
     <span className={["inline-flex items-center", wrapperClassName].join(" ")}>
       <Image
-        src="/logo.png"
+        src="/logo.svg"
         alt={ariaLabel}
         width={dimensions.width}
         height={dimensions.height}
-        className="h-auto w-auto object-contain"
+        className="object-contain"
+        style={{ width: `${dimensions.width}px`, height: "auto" }}
         sizes={`${dimensions.width}px`}
       />
     </span>

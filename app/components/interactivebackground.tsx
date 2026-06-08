@@ -1,7 +1,5 @@
 "use client";
 
-import BackgroundMonumentLive from "./BackgroundMonumentLive";
-
 export default function InteractiveBackground() {
   return (
     <div className="absolute inset-0 overflow-hidden bg-[var(--market-background)]">
@@ -10,8 +8,6 @@ export default function InteractiveBackground() {
       <div className="absolute right-[8%] top-[18%] h-[420px] w-[420px] rounded-full bg-white/[0.03] blur-[120px]" />
 
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(47,109,134,0.4),transparent_30%),radial-gradient(circle_at_15%_30%,rgba(47,109,134,0.22),transparent_24%),radial-gradient(circle_at_85%_30%,rgba(47,109,134,0.2),transparent_24%),radial-gradient(circle_at_50%_58%,rgba(47,109,134,0.12),transparent_26%)]" />
-
-      <BackgroundMonumentLive />
 
       <div className="absolute inset-0 opacity-[0.32] [background-image:linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:72px_72px]" />
 
