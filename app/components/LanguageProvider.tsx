@@ -11,9 +11,8 @@ import {
 import { usePathname, useRouter } from "next/navigation";
 import { dictionary, type Language } from "@/lib/dictionary";
 import {
-  buildLanguageCookieValue,
-  getLocaleFromPathname,
-  normalizeLanguage,
+  getMarketDirection,
+  translatePathnameToLanguage,
 } from "@/lib/market/syria.globals";
 
 type LanguageContextValue = {
@@ -34,17 +33,15 @@ export default function LanguageProvider({
 }) {
   const pathname = usePathname() ?? "/";
   const router = useRouter();
-  const pathnameLanguage = getLocaleFromPathname(pathname);
   const [language, setLanguageState] = useState<Language>(initialLanguage);
 
   useEffect(() => {
-    setLanguageState(normalizeLanguage(initialLanguage));
+    setLanguageState(initialLanguage);
   }, [initialLanguage]);
 
   useEffect(() => {
     document.documentElement.lang = language;
-    document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
-    document.cookie = buildLanguageCookieValue(language);
+    document.documentElement.dir = getMarketDirection(language);
   }, [language]);
 
   const setLanguage = (nextLanguage: Language) => {
@@ -52,19 +49,11 @@ export default function LanguageProvider({
       return;
     }
 
-    document.cookie = buildLanguageCookieValue(nextLanguage);
     setLanguageState(nextLanguage);
 
     const currentHash = typeof window === "undefined" ? "" : window.location.hash;
-
-    if (pathnameLanguage) {
-      const nextPath =
-        pathname === `/${pathnameLanguage}`
-          ? `/${nextLanguage}`
-          : pathname.replace(`/${pathnameLanguage}`, `/${nextLanguage}`);
-
-      router.replace(`${nextPath}${currentHash}`, { scroll: false });
-    }
+    const nextPath = translatePathnameToLanguage(pathname, nextLanguage);
+    router.replace(`${nextPath}${currentHash}`, { scroll: false });
   };
 
   const toggleLanguage = () => {
@@ -78,7 +67,7 @@ export default function LanguageProvider({
       toggleLanguage,
       t: dictionary,
     }),
-    [language, pathname, pathnameLanguage, router]
+    [language, pathname, router]
   );
 
   return (

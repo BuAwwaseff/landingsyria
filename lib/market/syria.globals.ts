@@ -196,19 +196,8 @@ export const syriaGlobals = {
   },
 } as const;
 
-export const LANGUAGE_COOKIE_NAME = "site-language";
-export const LANGUAGE_COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
-
 export function isSupportedLocale(value: string): value is Language {
   return (syriaGlobals.market.locales as readonly string[]).includes(value);
-}
-
-export function normalizeLanguage(value: string | null | undefined): Language {
-  return value && isSupportedLocale(value) ? value : syriaGlobals.market.defaultLocale;
-}
-
-export function buildLanguageCookieValue(language: Language) {
-  return `${LANGUAGE_COOKIE_NAME}=${language}; Path=/; Max-Age=${LANGUAGE_COOKIE_MAX_AGE}; SameSite=Lax`;
 }
 
 export function getLocaleFromPathname(pathname: string): Language | null {
@@ -245,6 +234,20 @@ export function localizeHref(pathname: string, href: string) {
   }
 
   return `/${locale}${href}`;
+}
+
+export function translatePathnameToLanguage(pathname: string, language: Language) {
+  const normalizedPathname = stripLocaleFromPathname(pathname);
+
+  if (language === syriaGlobals.market.defaultLocale) {
+    return normalizedPathname;
+  }
+
+  if (normalizedPathname === "/") {
+    return `/${language}`;
+  }
+
+  return `/${language}${normalizedPathname}`;
 }
 
 export function getMarketDirection(language: Language) {
