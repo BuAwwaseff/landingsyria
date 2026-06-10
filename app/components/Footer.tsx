@@ -6,38 +6,46 @@ import { usePathname } from "next/navigation";
 import { useLanguage } from "./LanguageProvider";
 import { MarketLogo } from "./MarketLogo";
 import { getLocalizedText, syriaContent } from "@/lib/market/syria.content";
-import { getMarketDirection, syriaGlobals } from "@/lib/market/syria.globals";
+import {
+  getMarketDirection,
+  localizeHref,
+  stripLocaleFromPathname,
+  syriaGlobals,
+} from "@/lib/market/syria.globals";
 import { getPlayerHomeContent } from "@/lib/player-home";
 
 export default function Footer() {
   const pathname = usePathname() ?? "/";
+  const normalizedPathname = stripLocaleFromPathname(pathname);
   const { language, t } = useLanguage();
   const direction = getMarketDirection(language);
   const home = getPlayerHomeContent(language);
-  const isPartnershipPage = pathname.startsWith(syriaGlobals.routes.partnership);
+  const isPartnershipPage = normalizedPathname.startsWith(syriaGlobals.routes.partnership);
+  const homeHref = localizeHref(pathname, syriaGlobals.routes.home);
+  const partnershipHref = localizeHref(pathname, syriaGlobals.routes.partnership);
 
   const homeLinks = [
-    { href: `${syriaGlobals.routes.home}${syriaGlobals.home.anchors.games}`, label: home.nav.games },
-    { href: `${syriaGlobals.routes.home}${syriaGlobals.home.anchors.sports}`, label: home.nav.sports },
-    { href: `${syriaGlobals.routes.home}${syriaGlobals.home.anchors.offers}`, label: home.nav.offers },
-    { href: `${syriaGlobals.routes.home}${syriaGlobals.home.anchors.support}`, label: home.nav.support },
+    { href: `${homeHref}${syriaGlobals.home.anchors.games}`, label: home.nav.games },
+    { href: `${homeHref}${syriaGlobals.home.anchors.sports}`, label: home.nav.sports },
+    { href: `${homeHref}${syriaGlobals.home.anchors.offers}`, label: home.nav.offers },
+    { href: `${homeHref}${syriaGlobals.home.anchors.support}`, label: home.nav.support },
   ];
 
   const partnershipLinks = [
     {
-      href: `${syriaGlobals.routes.partnership}${syriaGlobals.partnership.anchors.benefits}`,
+      href: `${partnershipHref}${syriaGlobals.partnership.anchors.benefits}`,
       label: getLocalizedText(syriaContent.navigation.benefits, language),
     },
     {
-      href: `${syriaGlobals.routes.partnership}${syriaGlobals.partnership.anchors.steps}`,
+      href: `${partnershipHref}${syriaGlobals.partnership.anchors.steps}`,
       label: getLocalizedText(syriaContent.navigation.steps, language),
     },
     {
-      href: `${syriaGlobals.routes.partnership}${syriaGlobals.partnership.anchors.paths}`,
+      href: `${partnershipHref}${syriaGlobals.partnership.anchors.paths}`,
       label: getLocalizedText(syriaContent.navigation.paths, language),
     },
     {
-      href: `${syriaGlobals.routes.partnership}${syriaGlobals.partnership.anchors.tools}`,
+      href: `${partnershipHref}${syriaGlobals.partnership.anchors.tools}`,
       label: getLocalizedText(syriaContent.navigation.tools, language),
     },
   ];

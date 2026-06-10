@@ -80,6 +80,125 @@ body {
     0 0 28px rgba(198, 132, 75, 0.18);
 }
 
+.market-logo {
+  --logo-bet-color: #ffbc00;
+  --logo-bet-rgb: 255, 188, 0;
+  position: relative;
+  display: inline-flex;
+  width: min(100%, var(--logo-frame-width, 150px));
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  overflow: visible;
+  padding: var(--logo-frame-pad-y, 8px) var(--logo-frame-pad-x, 10px);
+  isolation: isolate;
+  perspective: 900px;
+  transform-style: preserve-3d;
+}
+
+.market-logo__svg {
+  display: block;
+  width: min(100%, var(--logo-svg-width, 126px));
+  height: auto;
+  overflow: visible;
+}
+
+.market-logo__letter {
+  backface-visibility: hidden;
+  transform-box: fill-box;
+  transform-origin: center center;
+  transform-style: preserve-3d;
+  transition:
+    filter 220ms ease,
+    opacity 220ms ease;
+  will-change: transform, filter, opacity;
+}
+
+.market-logo__letter path {
+  fill: currentColor;
+}
+
+.market-logo__letter--mel {
+  color: var(--market-text-strong);
+}
+
+.market-logo__letter--bet {
+  color: var(--logo-bet-color);
+}
+
+.market-logo--glow {
+  animation: marketLogoGlow 4.8s ease-in-out infinite;
+}
+
+.market-logo--glow .market-logo__letter--mel {
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.08));
+}
+
+.market-logo--glow .market-logo__letter--bet {
+  filter: drop-shadow(0 0 10px rgba(var(--logo-bet-rgb), 0.14));
+}
+
+.market-logo__shine {
+  position: absolute;
+  inset: -24% -16%;
+  background: linear-gradient(
+    110deg,
+    transparent 24%,
+    rgba(255, 255, 255, 0.04) 42%,
+    rgba(var(--logo-bet-rgb), 0.42) 50%,
+    rgba(255, 255, 255, 0.06) 58%,
+    transparent 74%
+  );
+  mix-blend-mode: screen;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-140%) skewX(-18deg);
+}
+
+.market-logo--slot .market-logo__letter {
+  animation: marketLetterSlot 4.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  animation-delay: calc(var(--logo-letter-index, 0) * 120ms);
+}
+
+@keyframes marketLogoGlow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 10px rgba(255, 188, 0, 0.05));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 18px rgba(255, 188, 0, 0.1));
+  }
+}
+
+@keyframes marketLetterSlot {
+  0%,
+  14%,
+  100% {
+    transform: translate3d(0, 0, 0) rotateX(0deg);
+  }
+
+  20% {
+    transform: translate3d(0, 3px, -6px) rotateX(82deg);
+  }
+
+  28% {
+    transform: translate3d(0, -7px, -12px) rotateX(-210deg);
+  }
+
+  35% {
+    transform: translate3d(0, 2px, -3px) rotateX(28deg);
+  }
+
+  42% {
+    transform: translate3d(0, -1px, 0) rotateX(-10deg);
+  }
+
+  48% {
+    transform: translate3d(0, 0, 0) rotateX(0deg);
+  }
+}
+
 @layer components {
   .lp-eyebrow {
     @apply text-[12px] sm:text-[14px] font-semibold uppercase tracking-[0.22em];

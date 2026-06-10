@@ -172,6 +172,26 @@ export default function HomePage() {
                 </Link>
               </div>
 
+              <div className="mt-4 flex flex-wrap gap-3">
+                <Link
+                  href={syriaGlobals.support.telegram.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex h-11 items-center justify-center rounded-full border border-[#2F6D86]/26 bg-[#08141B]/76 px-5 text-sm font-semibold text-[#5EA6C2] transition duration-300 hover:scale-[1.02] hover:border-[#2F6D86]/42 hover:bg-[#0C1C24]"
+                >
+                  {content.finalCta.primary}
+                </Link>
+
+                <Link
+                  href={syriaGlobals.support.email.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex h-11 items-center justify-center rounded-full border border-[#C6844B]/22 bg-[#C6844B]/10 px-5 text-sm font-semibold text-[#E4B47B] transition duration-300 hover:scale-[1.02] hover:border-[#C6844B]/38 hover:bg-[#C6844B]/16"
+                >
+                  {content.finalCta.secondary}
+                </Link>
+              </div>
+
               <div className="mt-8 flex flex-wrap gap-3">
                 {content.hero.chips.map((chip) => (
                   <div

@@ -8,7 +8,13 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { dictionary, type Language } from "@/lib/dictionary";
+import {
+  buildLanguageCookieValue,
+  getLocaleFromPathname,
+  normalizeLanguage,
+} from "@/lib/market/syria.globals";
 
 type LanguageContextValue = {
   language: Language;
@@ -21,30 +27,48 @@ const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 export default function LanguageProvider({
   children,
+  initialLanguage,
 }: {
   children: ReactNode;
+  initialLanguage: Language;
 }) {
-  const [language, setLanguageState] = useState<Language>(() => {
-    if (typeof window === "undefined") {
-      return "en";
-    }
-
-    const saved = window.localStorage.getItem("site-language");
-    return saved === "ar" ? "ar" : "en";
-  });
+  const pathname = usePathname() ?? "/";
+  const router = useRouter();
+  const pathnameLanguage = getLocaleFromPathname(pathname);
+  const [language, setLanguageState] = useState<Language>(initialLanguage);
 
   useEffect(() => {
-    window.localStorage.setItem("site-language", language);
+    setLanguageState(normalizeLanguage(initialLanguage));
+  }, [initialLanguage]);
+
+  useEffect(() => {
     document.documentElement.lang = language;
     document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+    document.cookie = buildLanguageCookieValue(language);
   }, [language]);
 
   const setLanguage = (nextLanguage: Language) => {
+    if (nextLanguage === language) {
+      return;
+    }
+
+    document.cookie = buildLanguageCookieValue(nextLanguage);
     setLanguageState(nextLanguage);
+
+    const currentHash = typeof window === "undefined" ? "" : window.location.hash;
+
+    if (pathnameLanguage) {
+      const nextPath =
+        pathname === `/${pathnameLanguage}`
+          ? `/${nextLanguage}`
+          : pathname.replace(`/${pathnameLanguage}`, `/${nextLanguage}`);
+
+      router.replace(`${nextPath}${currentHash}`, { scroll: false });
+    }
   };
 
   const toggleLanguage = () => {
-    setLanguageState((current) => (current === "en" ? "ar" : "en"));
+    setLanguage(language === "en" ? "ar" : "en");
   };
 
   const value = useMemo(
@@ -54,7 +78,7 @@ export default function LanguageProvider({
       toggleLanguage,
       t: dictionary,
     }),
-    [language]
+    [language, pathname, pathnameLanguage, router]
   );
 
   return (
