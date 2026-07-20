@@ -1,0 +1,22 @@
+# melbet-syria.net
+
+Public landing pages for Melbet Syria in English and Arabic.
+
+## Preferred URLs
+
+- https://melbet-syria.net/
+- https://melbet-syria.net/partnership
+- https://melbet-syria.net/ar
+- https://melbet-syria.net/ar/partnership
+
+## Page Summary
+
+- `/`: English homepage covering sports, games, offers, and support links.
+- `/partnership`: English partnership page covering partner and agent routes, steps, benefits, and tools.
+- `/ar`: Arabic homepage covering sports, games, offers, and support links.
+- `/ar/partnership`: Arabic partnership page covering partner and agent routes, steps, benefits, and tools.
+
+## Notes
+
+- Default English URLs are unprefixed.
+- The application also contains `/en` route variants, but the preferred English URLs are the unprefixed paths listed above.
