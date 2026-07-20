@@ -127,7 +127,7 @@ export default function Footer() {
                     rel="noreferrer"
                     className="inline-flex min-h-[42px] items-center gap-3 rounded-full border border-white/8 bg-white/[0.03] px-4 text-sm text-white/70 transition-all duration-300 hover:-translate-y-[1px] hover:border-[#C6844B]/25 hover:text-white"
                   >
-                    <Image src={item.icon} alt="" width={16} height={16} className="h-4 w-4 object-contain" />
+                    <Image src={item.icon} alt="" width={16} height={16} className="h-4 w-4 object-contain brightness-0 invert" />
                     {item.label}
                   </Link>
                 ))}

@@ -36,7 +36,7 @@ function ContactButton({
           alt={label}
           width={20}
           height={20}
-          className="h-5 w-5 shrink-0 object-contain"
+          className="h-5 w-5 shrink-0 object-contain brightness-0 invert"
         />
 
         <span className="lp-button max-w-[180px] overflow-hidden whitespace-nowrap leading-[1.35] opacity-100 transition-all duration-300 sm:max-w-0 sm:opacity-0 sm:group-hover:max-w-[140px] sm:group-hover:opacity-100">

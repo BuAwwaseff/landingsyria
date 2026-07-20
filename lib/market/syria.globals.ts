@@ -115,9 +115,9 @@ export const syriaGlobals = {
     },
     layout: {
       containerWidth: "1180px",
-      heroPaddingTop: "clamp(2rem, 4vw, 2.5rem)",
-      heroPaddingBottom: "clamp(4rem, 7vw, 5rem)",
-      sectionPaddingY: "clamp(3.5rem, 6vw, 4.75rem)",
+      heroPaddingTop: "clamp(1.25rem, 2.6vw, 1.9rem)",
+      heroPaddingBottom: "clamp(1.4rem, 2.8vw, 2rem)",
+      sectionPaddingY: "clamp(2.25rem, 4.2vw, 3rem)",
       gridGap: "1rem",
     },
     assets: {
@@ -173,8 +173,8 @@ export const syriaGlobals = {
     layout: {
       containerWidth: "1120px",
       heroPaddingTop: "clamp(3rem, 6vw, 4.5rem)",
-      heroPaddingBottom: "clamp(4rem, 7vw, 5rem)",
-      sectionPaddingY: "clamp(1.75rem, 3vw, 2.75rem)",
+      heroPaddingBottom: "clamp(2.6rem, 4.8vw, 3.4rem)",
+      sectionPaddingY: "clamp(1.15rem, 2.2vw, 1.8rem)",
       gridGap: "0.95rem",
     },
     assets: {

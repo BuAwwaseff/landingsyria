@@ -68,12 +68,14 @@ function LanguageSwitcher({
 }
 
 export default function TopBar() {
+  const appDownloadHref = "https://refpa3665.com/L?tag=d_5002529m_70867c_MEMOAPP";
   const pathname = usePathname() ?? "/";
   const normalizedPathname = stripLocaleFromPathname(pathname);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { language, t } = useLanguage();
   const home = getPlayerHomeContent(language);
   const direction = getMarketDirection(language);
+  const downloadAppLabel = language === "ar" ? "\u062a\u062d\u0645\u064a\u0644 \u0627\u0644\u062a\u0637\u0628\u064a\u0642" : "Download App";
   const isPartnershipPage = normalizedPathname.startsWith(syriaGlobals.routes.partnership);
   const homeHref = localizeHref(pathname, syriaGlobals.routes.home);
   const partnershipHref = localizeHref(pathname, syriaGlobals.routes.partnership);
@@ -208,7 +210,18 @@ export default function TopBar() {
               </Link>
             </div>
 
-            <nav className="order-2 hidden min-w-0 flex-1 items-center justify-center gap-2 lg:flex">
+            <div className="order-2 flex shrink-0 lg:hidden">
+              <a
+                href={appDownloadHref}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex min-h-[42px] items-center justify-center rounded-full bg-[#2F6D86] px-3 text-[12px] font-semibold text-[#07151C] shadow-[0_12px_28px_rgba(47,109,134,0.24)] transition duration-300 hover:scale-[1.01] hover:bg-[#5EA6C2] sm:min-h-[46px] sm:px-4 sm:text-[13px]"
+              >
+                {downloadAppLabel}
+              </a>
+            </div>
+
+            <nav className="order-3 hidden min-w-0 flex-1 items-center justify-center gap-2 lg:flex">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
@@ -227,8 +240,17 @@ export default function TopBar() {
               ))}
             </nav>
 
-            <div className="order-3 flex flex-1 items-center justify-end lg:flex-none">
-              <div className="hidden lg:flex">
+            <div className="order-4 flex flex-1 items-center justify-end lg:flex-none">
+              <div className="hidden items-center gap-3 lg:flex">
+                <a
+                  href={appDownloadHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex min-h-[46px] items-center justify-center rounded-full bg-[#2F6D86] px-5 text-[14px] font-semibold text-[#07151C] shadow-[0_14px_32px_rgba(47,109,134,0.24)] transition duration-300 hover:scale-[1.01] hover:bg-[#5EA6C2]"
+                >
+                  {downloadAppLabel}
+                </a>
+
                 <LanguageSwitcher />
               </div>
 
@@ -294,6 +316,16 @@ export default function TopBar() {
                 <div className="relative mt-3">
                   <LanguageSwitcher fullWidth />
                 </div>
+
+                <a
+                  href={appDownloadHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="relative mt-4 inline-flex min-h-[50px] w-full items-center justify-center rounded-full bg-[#2F6D86] px-6 text-sm font-semibold text-[#07151C] shadow-[0_14px_32px_rgba(47,109,134,0.24)] transition duration-300 hover:scale-[1.01] hover:bg-[#5EA6C2]"
+                >
+                  {downloadAppLabel}
+                </a>
 
                 <Link
                   href={mobilePrimaryAction.href}
