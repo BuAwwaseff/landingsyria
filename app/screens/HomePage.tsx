@@ -171,8 +171,13 @@ function PartnerRouteDemo() {
     <svg viewBox="0 0 420 500" preserveAspectRatio="xMidYMin slice" className="absolute inset-0 h-full w-full origin-top scale-[1.02] sm:scale-[1.05]" aria-hidden="true">
       <defs>
         <linearGradient id="partnerFlowStrong" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#9ED9EE" stopOpacity="0.92" />
-          <stop offset="100%" stopColor="#2F6D86" stopOpacity="0.34" />
+          <stop offset="0%" stopColor="#E4B47B" stopOpacity="0.88" />
+          <stop offset="48%" stopColor="#E4B47B" stopOpacity="0.6" />
+          <stop offset="100%" stopColor="#E4B47B" stopOpacity="0.22" />
+        </linearGradient>
+        <linearGradient id="partnerFlowCore" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#E4B47B" stopOpacity="0.94" />
+          <stop offset="100%" stopColor="#E4B47B" stopOpacity="0.56" />
         </linearGradient>
         <radialGradient id="partnerGlow" cx="50%" cy="45%" r="62%">
           <stop offset="0%" stopColor="#5EA6C2" stopOpacity="0.24" />
@@ -189,16 +194,24 @@ function PartnerRouteDemo() {
 
       <g opacity="0.88">
         <animate attributeName="opacity" values="0.72;0.9;0.72" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" dur="9.2s" repeatCount="indefinite" />
-        <path d="M210 108 Q178 128 160 182" stroke="url(#partnerFlowStrong)" strokeOpacity="0.54" strokeWidth="3.2" fill="none" />
-        <path d="M210 108 Q242 128 260 182" stroke="url(#partnerFlowStrong)" strokeOpacity="0.54" strokeWidth="3.2" fill="none" />
-        <path d="M124 216 Q96 294 66 320" stroke="url(#partnerFlowStrong)" strokeOpacity="0.48" strokeWidth="3" fill="none" />
-        <path d="M148 216 Q146 300 144 320" stroke="url(#partnerFlowStrong)" strokeOpacity="0.48" strokeWidth="3" fill="none" />
-        <path d="M136 194 Q136 260 136 320" stroke="#7CC5E4" strokeOpacity="0.2" strokeWidth="1.9" strokeDasharray="3 8" strokeLinecap="round" fill="none" />
-        <path d="M210 164 Q210 244 210 320" stroke="url(#partnerFlowStrong)" strokeOpacity="0.5" strokeWidth="3" fill="none" />
-        <path d="M210 46 Q210 176 210 320" stroke="#7CC5E4" strokeOpacity="0.24" strokeWidth="2.1" strokeDasharray="3 8" strokeLinecap="round" fill="none" />
-        <path d="M272 216 Q274 300 276 320" stroke="url(#partnerFlowStrong)" strokeOpacity="0.48" strokeWidth="3" fill="none" />
-        <path d="M296 216 Q324 294 354 320" stroke="url(#partnerFlowStrong)" strokeOpacity="0.48" strokeWidth="3" fill="none" />
-        <path d="M284 194 Q284 260 284 320" stroke="#7CC5E4" strokeOpacity="0.2" strokeWidth="1.9" strokeDasharray="3 8" strokeLinecap="round" fill="none" />
+        <g fill="none" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M210 102 C186 112 148 140 124 174" stroke="#E4B47B" strokeOpacity="0.14" strokeWidth="8.8" />
+          <path d="M210 102 C234 112 272 140 296 174" stroke="#E4B47B" strokeOpacity="0.14" strokeWidth="8.8" />
+          <path d="M124 216 C96 244 72 286 58 310" stroke="#E4B47B" strokeOpacity="0.12" strokeWidth="7.8" strokeDasharray="1 13" />
+          <path d="M124 216 C132 250 136 286 136 310" stroke="#E4B47B" strokeOpacity="0.12" strokeWidth="7.2" />
+
+          <path d="M296 216 C288 250 284 286 284 310" stroke="#E4B47B" strokeOpacity="0.12" strokeWidth="7.2" />
+          <path d="M296 216 C324 244 348 286 362 310" stroke="#E4B47B" strokeOpacity="0.12" strokeWidth="7.8" strokeDasharray="1 13" />
+
+          <path d="M210 102 C186 112 148 140 124 174" stroke="url(#partnerFlowCore)" strokeOpacity="0.66" strokeWidth="3.6" />
+          <path d="M210 102 C234 112 272 140 296 174" stroke="url(#partnerFlowCore)" strokeOpacity="0.66" strokeWidth="3.6" />
+          <path d="M124 216 C96 244 72 286 58 310" stroke="url(#partnerFlowStrong)" strokeOpacity="0.52" strokeWidth="3.2" strokeDasharray="1 11" />
+          <path d="M124 216 C132 250 136 286 136 310" stroke="url(#partnerFlowStrong)" strokeOpacity="0.48" strokeWidth="3" />
+
+          <path d="M296 216 C288 250 284 286 284 310" stroke="url(#partnerFlowStrong)" strokeOpacity="0.48" strokeWidth="3" />
+          <path d="M296 216 C324 244 348 286 362 310" stroke="url(#partnerFlowStrong)" strokeOpacity="0.52" strokeWidth="3.2" strokeDasharray="1 11" />
+        </g>
+
       </g>
 
       <circle cx="210" cy="96" r="92" fill="url(#partnerGlow)">
@@ -209,7 +222,7 @@ function PartnerRouteDemo() {
         <animate attributeName="r" values="80;102" keyTimes="0;1" calcMode="spline" keySplines="0.2 0 0.2 1" dur="7.6s" repeatCount="indefinite" />
         <animate attributeName="stroke-opacity" values="0.12;0" keyTimes="0;1" calcMode="spline" keySplines="0.2 0 0.2 1" dur="7.6s" repeatCount="indefinite" />
       </circle>
-      <circle cx="210" cy="96" r="78" fill="none" stroke="#5EA6C2" strokeOpacity="0.14" strokeWidth="1.2">
+      <circle cx="210" cy="96" r="78" fill="none" stroke="#E4B47B" strokeOpacity="0.14" strokeWidth="1.2">
         <animate attributeName="r" values="80;102" keyTimes="0;1" calcMode="spline" keySplines="0.2 0 0.2 1" dur="7.6s" begin="3.8s" repeatCount="indefinite" />
         <animate attributeName="stroke-opacity" values="0.1;0" keyTimes="0;1" calcMode="spline" keySplines="0.2 0 0.2 1" dur="7.6s" begin="3.8s" repeatCount="indefinite" />
       </circle>
@@ -227,7 +240,7 @@ function PartnerRouteDemo() {
 
       <g opacity="0.86">
         <text x="104" y="132" textAnchor="middle" fill="#81ABC0" fontSize="8.6" fontWeight="700" letterSpacing="1.08">PASSIVE INCOME</text>
-        <text x="316" y="132" textAnchor="middle" fill="#81ABC0" fontSize="8.6" fontWeight="700" letterSpacing="0.96">RECURRING TRANSACTIONS</text>
+        <text x="326" y="132" textAnchor="middle" fill="#81ABC0" fontSize="8.6" fontWeight="700" letterSpacing="0.96">RECURRING TRANSACTIONS</text>
       </g>
 
       <g transform="translate(0 0)">
@@ -241,7 +254,7 @@ function PartnerRouteDemo() {
         </circle>
         <circle cx="90" cy="190.6" r="2.9" fill="#07151C" />
         <path d="M83 199 C84 194 87 192 90 192 C93 192 96 194 97 199 Z" fill="#07151C" />
-        <text x="140" y="196" textAnchor="middle" dominantBaseline="middle" fill="#81ABC0" fontSize="6.4" fontWeight="700" letterSpacing="0.68" textLength="68" lengthAdjust="spacingAndGlyphs">TEAMCASH AGENT</text>
+        <text x="100" y="196" textAnchor="start" dominantBaseline="middle" fill="#81ABC0" fontSize="6.4" fontWeight="700" letterSpacing="0.68" textLength="68" lengthAdjust="spacingAndGlyphs">TEAMCASH AGENT</text>
       </g>
 
       <g transform="translate(0 0)">
@@ -255,7 +268,7 @@ function PartnerRouteDemo() {
         </circle>
         <circle cx="262" cy="190.6" r="2.9" fill="#07151C" />
         <path d="M255 199 C256 194 259 192 262 192 C265 192 268 194 269 199 Z" fill="#07151C" />
-        <text x="300" y="196" textAnchor="middle" dominantBaseline="middle" fill="#81ABC0" fontSize="6.4" fontWeight="700" letterSpacing="0.68" textLength="68" lengthAdjust="spacingAndGlyphs">TEAMCASH AGENT</text>
+        <text x="272" y="196" textAnchor="start" dominantBaseline="middle" fill="#81ABC0" fontSize="6.4" fontWeight="700" letterSpacing="0.68" textLength="68" lengthAdjust="spacingAndGlyphs">TEAMCASH AGENT</text>
       </g>
 
       <g transform="translate(0 0)">
@@ -325,58 +338,30 @@ function PartnerRouteDemo() {
         <text x="323" y="368" textAnchor="middle" fill="#81ABC0" fontSize="10.2" fontWeight="700" letterSpacing="1.18">players</text>
       </g>
 
-      <g fill="#9ED9EE" opacity="0.88">
-        <circle r="3.2">
-          <animate attributeName="opacity" values="0;0.95;0" dur="5.2s" begin="0.5s" repeatCount="indefinite" />
-          <animateMotion dur="5.2s" begin="0.5s" repeatCount="indefinite" path="M160 182 Q178 128 210 108" />
+      <g fill="#9ED9EE" opacity="0.92">
+        <circle r="3.4">
+          <animate attributeName="opacity" values="0;1;0" dur="5s" begin="0.2s" repeatCount="indefinite" />
+          <animateMotion dur="5s" begin="0.2s" repeatCount="indefinite" path="M210 102 C186 112 148 140 124 174" />
         </circle>
-        <circle r="3.2">
-          <animate attributeName="opacity" values="0;0.95;0" dur="5.4s" begin="1.8s" repeatCount="indefinite" />
-          <animateMotion dur="5.4s" begin="1.8s" repeatCount="indefinite" path="M260 182 Q242 128 210 108" />
+        <circle r="3.4">
+          <animate attributeName="opacity" values="0;1;0" dur="5s" begin="1.2s" repeatCount="indefinite" />
+          <animateMotion dur="5s" begin="1.2s" repeatCount="indefinite" path="M210 102 C234 112 272 140 296 174" />
         </circle>
-        <circle r="3.2">
-          <animate attributeName="opacity" values="0;0.95;0" dur="5s" begin="0.9s" repeatCount="indefinite" />
-          <animateMotion dur="5s" begin="0.9s" repeatCount="indefinite" path="M66 320 Q96 294 124 216" />
+        <circle r="3.4">
+          <animate attributeName="opacity" values="0;1;0" dur="5.1s" begin="0.6s" repeatCount="indefinite" />
+          <animateMotion dur="5.1s" begin="0.6s" repeatCount="indefinite" path="M124 216 C96 244 72 286 58 310" />
         </circle>
-        <circle r="3.2">
-          <animate attributeName="opacity" values="0;0.95;0" dur="4.9s" begin="1.5s" repeatCount="indefinite" />
-          <animateMotion dur="4.9s" begin="1.5s" repeatCount="indefinite" path="M144 320 Q146 300 148 216" />
+        <circle r="3.4">
+          <animate attributeName="opacity" values="0;1;0" dur="5.1s" begin="1.8s" repeatCount="indefinite" />
+          <animateMotion dur="5.1s" begin="1.8s" repeatCount="indefinite" path="M296 216 C324 244 348 286 362 310" />
         </circle>
-        <circle r="2.9">
-          <animate attributeName="opacity" values="0;0.9;0" dur="5.4s" begin="0.9s" repeatCount="indefinite" />
-          <animateMotion dur="5.4s" begin="0.9s" repeatCount="indefinite" path="M136 194 Q136 260 136 320" />
+        <circle r="3.4">
+          <animate attributeName="opacity" values="0;1;0" dur="5.1s" begin="1.2s" repeatCount="indefinite" />
+          <animateMotion dur="5.1s" begin="1.2s" repeatCount="indefinite" path="M136 310 C136 286 132 250 124 216" />
         </circle>
-        <circle r="2.9">
-          <animate attributeName="opacity" values="0;0.9;0" dur="5.4s" begin="3.5s" repeatCount="indefinite" />
-          <animateMotion dur="5.4s" begin="3.5s" repeatCount="indefinite" path="M136 194 Q136 260 136 320" />
-        </circle>
-        <circle r="3.2">
-          <animate attributeName="opacity" values="0;0.95;0" dur="5.3s" begin="2.2s" repeatCount="indefinite" />
-          <animateMotion dur="5.3s" begin="2.2s" repeatCount="indefinite" path="M210 320 Q210 244 210 164" />
-        </circle>
-        <circle r="3.1">
-          <animate attributeName="opacity" values="0;0.95;0" dur="5.8s" begin="0.4s" repeatCount="indefinite" />
-          <animateMotion dur="5.8s" begin="0.4s" repeatCount="indefinite" path="M210 46 Q210 176 210 320" />
-        </circle>
-        <circle r="3.1">
-          <animate attributeName="opacity" values="0;0.95;0" dur="5.8s" begin="3.3s" repeatCount="indefinite" />
-          <animateMotion dur="5.8s" begin="3.3s" repeatCount="indefinite" path="M210 46 Q210 176 210 320" />
-        </circle>
-        <circle r="3.2">
-          <animate attributeName="opacity" values="0;0.95;0" dur="5s" begin="1s" repeatCount="indefinite" />
-          <animateMotion dur="5s" begin="1s" repeatCount="indefinite" path="M276 320 Q274 300 272 216" />
-        </circle>
-        <circle r="2.9">
-          <animate attributeName="opacity" values="0;0.9;0" dur="5.4s" begin="1.6s" repeatCount="indefinite" />
-          <animateMotion dur="5.4s" begin="1.6s" repeatCount="indefinite" path="M284 194 Q284 260 284 320" />
-        </circle>
-        <circle r="2.9">
-          <animate attributeName="opacity" values="0;0.9;0" dur="5.4s" begin="4.2s" repeatCount="indefinite" />
-          <animateMotion dur="5.4s" begin="4.2s" repeatCount="indefinite" path="M284 194 Q284 260 284 320" />
-        </circle>
-        <circle r="3.2">
-          <animate attributeName="opacity" values="0;0.95;0" dur="5.4s" begin="2.5s" repeatCount="indefinite" />
-          <animateMotion dur="5.4s" begin="2.5s" repeatCount="indefinite" path="M354 320 Q324 294 296 216" />
+        <circle r="3.4">
+          <animate attributeName="opacity" values="0;1;0" dur="5.1s" begin="2.4s" repeatCount="indefinite" />
+          <animateMotion dur="5.1s" begin="2.4s" repeatCount="indefinite" path="M284 310 C284 286 288 250 296 216" />
         </circle>
       </g>
     </svg>
@@ -594,7 +579,7 @@ export default function HomePage() {
                   <span className="relative grid w-full items-center gap-4 sm:grid-cols-[minmax(0,1fr)_180px]">
                     <span className="flex min-w-0 flex-col justify-center">
                       <span className="text-[22px] font-semibold leading-[1.01] text-white sm:max-w-[19ch] sm:text-[28px]">
-                        Claim your <span className="text-[#FFD7A7]">200$ offer</span>
+                        Claim your <span className="text-[#FFD7A7]">200$ offer now!</span>
                       </span>
                     </span>
                     <span className="flex self-center sm:justify-end">
@@ -603,8 +588,13 @@ export default function HomePage() {
                           <span className="absolute h-2 w-[1.5px] -translate-y-[1px] rounded-full bg-[#FFD7A7]" />
                           <span className="absolute h-[1.5px] w-2 translate-x-[2px] rounded-full bg-[#FFD7A7]" />
                         </span>
-                                                <span className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 font-mono text-[14px] tracking-[0.12em] text-white">
-                          {offerCountdown}
+                                                <span className="flex flex-col items-center gap-1">
+                          <span className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 font-mono text-[14px] tracking-[0.12em] text-white">
+                            {offerCountdown}
+                          </span>
+                          <span className="text-[9px] font-semibold tracking-[0.14em] text-[#E4B47B]/78">
+                            time left!
+                          </span>
                         </span>
                       </span>
                     </span>
@@ -896,6 +886,25 @@ export default function HomePage() {
     </main>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
